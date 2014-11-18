@@ -1,0 +1,11 @@
+{
+  "name": "novemberportfolio",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "modernizr": "~2.8.2",
+    "bourbon": "~4.0.2",
+    "neat": "~1.7.0",
+    "normalize.css": "~3.0.2"
+  }
+}

@@ -1,0 +1,31 @@
+// --- Colors ---
+
+// Actual
+$salmon: rgb(239,111,86);
+$gray: rgb(230,230,230);
+$black: rgb(0,0,0);
+
+// Semantic
+$color-bright: $salmon;
+$color-desat: $gray;
+$color-dark: $black;
+
+
+// --- Fonts ---
+
+// Actual
+$fira-mono-stack: "fira-mono", 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+$weight-regular: 400;
+$weight-bold: 700;
+
+// Semantic
+$font-mono-stack: $fira-mono-stack;
+
+%mono-regular {
+	font-family: $font-mono-stack;
+	font-weight: $weight-regular;
+}
+%mono-bold {
+	font-family: $font-mono-stack;
+	font-weight: $weight-bold;
+}
