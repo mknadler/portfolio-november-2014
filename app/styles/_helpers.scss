@@ -1,31 +1,33 @@
-// Custom helper functions
-@import "variables";
+// HELPER FUNCTIONS + MIXINS
+
+// Dependencies
+	@import "variables";
+
+
 
 
 
 // Iterate over all queries, changing a single value each time.
-// To use: @include each-query($property, $values)
-@mixin each-query($property, $values, $the-queries:$queries) {
-  @each $query, $value in zip($the-queries, $values){
-    @include media($query){
-      #{$property}: $value;
-    }    
-  }
-}
+// To use: @include sh
+	@mixin each-query($property, $values, $the-queries:$queries) {
+	  @each $query, $value in zip($the-queries, $values){
+	    @include media($query){
+	      #{$property}: $value;
+	    }    
+	  }
+	}
 
-@mixin show-queries{
-  content:'';
-  width: 100%;
-  height: 10px;
-  display: block;
-  position: fixed;
-  bottom: 0;
-  z-index: 2;
-  $bar-colors: red, orange, yellow, green;
-  @include each-query(background, $bar-colors);
-}
-
-%show-queries{
-	@include show-queries;
-
-}
+// Show a colored bar signifying which media query is active
+// To use: @include show-queries, or see Switches (in main.scss)
+	// todo: make placement-agnostic
+	@mixin show-queries{
+	  content:'';
+	  width: 100%;
+	  height: 10px;
+	  display: block;
+	  position: fixed;
+	  bottom: 0;
+	  z-index: 2;
+	  $bar-colors: red, orange, yellow, green;
+	  @include each-query(background, $bar-colors);
+	}
