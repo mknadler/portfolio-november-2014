@@ -23,13 +23,28 @@ $show-media-queries: on;
 }
 %site-title-font {
   @extend %title-font;
-  font-size: rem(36);
   text-transform: uppercase;
+  @include media($grandkid){
+    font-size: rem(18);
+    br { display: none; }
+  }
+  @include media($daughter){
+    font-size: rem(36);
+    br { display: inline; }
+  }
 }
 
 %site-description-font {
   @extend %body-font;
-  font-size: rem(18);
+  @include media($grandkid){
+    font-size: rem(10);
+  }
+  @include media($daughter){
+    font-size: rem(14);
+  }
+  @include media($mother){
+    font-size: rem(18);
+  }
 }
 
 @include keyframes(fadeShrink) {
@@ -70,7 +85,8 @@ $show-media-queries: on;
   }
 }
 
-%link-animation {
+@mixin link-animation {
+    // todo: use JS to make mobile touch friendly
     &:after {
     content: '';
     width: 90%;
@@ -131,52 +147,103 @@ a {
 header { 
   @include outer-container;
   background: $color-light;
-  height: 40%;
   width: 100%;
+  transition: height 1s ease;
+  @include media($grandkid){
+    height: 30%;
+    padding: 1rem;
+  }
+  @include media($daughter){
+    height: 40%;
+    padding: 3rem;
+  }
 }
 
 header{
-  padding: 3rem;
+
 }
 
 header h1 {
   @extend %site-title-font;
+  color: $color-dark;
+  position: relative;
+  z-index: 1;
+  &:after {
+    content: attr(data-title);
+    position: absolute;
+    color: $color-light;
+    top: 2px;
+    left: 0;
+    z-index: -1;
+  }
+  &:before {
+    content: "Miriam Kennedy Nadler";
+    position: absolute;
+    color: $color-base;
+    top: 4px;
+    left: 0;
+    z-index: -2;
+  }
 }
 
 header p {
   @extend %site-description-font;
+  @include media($grandkid){
+    margin: 1rem 0;
+    text-align: left;
+
+  }
+  font-size: rem(16);
+  line-height: 1.667;
 }
 
 header p a {
-  @extend %link-animation;
+    @include link-animation;   
+
 }
 
 div.title-container {
-  @include span-columns(3 of 12);
+  @include media($grandkid) {
+    @include span-columns(12 of 12);
+  }
+  @include media($daughter) {
+    @include span-columns(12 of 12);
+  }
 }
 
 div.about-container {
-  @include span-columns(6 of 12);
-  @include shift(3);
+  @include media($grandkid){
+    @include span-columns(12 of 12);
+    @include shift(0);
+  }
 }
+
+
+
+
 
 section {
-  padding: 3rem;
   overflow-x: scroll;
+  width: 100%;
 }
 
-div.portfolio-item {
-  width: 20rem;
-  height: 20rem;
+div.portfolio{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 1rem;
+}
+
+.portfolio > article {
   border: 1px solid $color-light;
   background: $color-base;
   padding: 5px;
-  float: left;
-  margin: 1rem;
-  > div {
-    width: 100%;
-    height: 100%;
-  }
+  height: 15rem;
+  width: 15rem;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .portfolio-item h2 {
@@ -191,8 +258,9 @@ div.portfolio-item {
   font-size: rem(18);
   }
 
-div[data-site="blaudit"] {
+article[data-site="blaudit"] {
   @include linear-gradient(to right, #FFA794, #FFC98E);
+  cell-padding: 5px;
 }
 
 
