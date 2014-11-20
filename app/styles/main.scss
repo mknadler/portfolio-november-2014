@@ -24,63 +24,72 @@ $grandma: new-breakpoint(min-width 1201px);
   text-transform: uppercase;
 }
 
+%title {
+  @extend %mono-bold;
+}
+
 ///
 
 body {
   @extend %mono-regular;
-  background: $color-desat;
+  background: $color-base;
   color: $color-dark;
 }
 
-body {
 
-  @include media($grandkid){
+$queries: $grandkid, $daughter, $mother, $grandma;
+
+@mixin each-query($property, $values, $the-queries:$queries) {
+  @each $query, $value in ($the-queries, $values){
+    @include media(#{$query}){
+      #{$property}: $value;
+    }    
+  }
+}
+
+@mixin show-queries{
+  content:'';
+  width: 100%;
+  height: 10px;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+  $bar-colors: red, orange, yellow, green;
+  @include each-query(background, $bar-colors);
+}
+
+
+body {
+  /*@include media($grandkid){
       &:before{
-        content:'';
-        width: 100%;
-        height: 10px;
-        display: block;
-        position: fixed;
-        bottom: 0;
-        z-index: 2;
+        @include show-media-queries--bar;
         background: red;
       }
   @include media($daughter){
       &:before{
-        content:'';
-        width: 100%;
-        height: 10px;
-        display: block;
-        position: fixed;
-        bottom: 0;
+       @include show-media-queries--bar;
         background: orange;
       }
   }
   @include media($mother){
-          &:before{
-        content:'';
-        width: 100%;
-        height: 10px;
-        display: block;
-        position: fixed;
-        bottom: 0;
+      &:before{
+         @include show-media-queries--bar;
         background: yellow;
       }
   }
   @include media($grandma){
         &:before{
-        content:'';
-        width: 100%;
-        height: 10px;
-        display: block;
-        position: fixed;
-        bottom: 0;
+         @include show-media-queries--bar;
         background: green;
       }
   }
+  }*/
+  &:before{
+    @include show-queries;
   }
-
 }
+
 
 
 header h1 {
@@ -101,7 +110,7 @@ p {
 
 header { 
   @include outer-container;
-  background: $color-bright;
+  background: $color-light;
   height: rem(200);
   width: 100%;
 }

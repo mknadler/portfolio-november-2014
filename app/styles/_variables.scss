@@ -1,13 +1,14 @@
 // --- Colors ---
 
 // Actual
-$salmon: rgb(239,111,86);
+$orange-salmon: rgb(239,111,86);
+$pink-salmon: rgb(255, 115, 115);
 $gray: rgb(230,230,230);
 $black: rgb(0,0,0);
 
-// Semantic
-$color-bright: $salmon;
-$color-desat: $gray;
+// Semantic + Generic
+$color-light: $pink-salmon;
+$color-base: $gray;
 $color-dark: $black;
 
 
@@ -28,4 +29,13 @@ $font-mono-stack: $fira-mono-stack;
 %mono-bold {
 	font-family: $font-mono-stack;
 	font-weight: $weight-bold;
+}
+
+// Generic
+
+%font-default {
+	@extend %mono-regular;
+}
+%font-bold {
+	@extend %mono-bold;
 }
