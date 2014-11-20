@@ -1,41 +1,64 @@
+/* VARIABLES
+	
+	'Actual': a variable whose value is measureable, e.g. color, size; 
+					e.g. $black: #000000
+	'Semantic': a variable defined by its purpose, function, or role
+			  		e.g. $dark: $black;
+	'Generic': variables which will be used as defaults
+					e.g. $text-color: $dark;
+
+	Ideally, this system will make it so that layout modules will be edited as rarely and easily as possible.
+*/
+
+
 // --- Colors ---
 
-// Actual
-$orange-salmon: rgb(239,111,86);
-$pink-salmon: rgb(255, 115, 115);
-$gray: rgb(230,230,230);
-$black: rgb(0,0,0);
+	// Actual
+		$orange-salmon: rgb(239,111,86);
+		$pink-salmon: rgb(255, 115, 115);
+		$gray: rgb(230,230,230);
+		$black: rgb(0,0,0);
 
-// Semantic + Generic
-$color-light: $pink-salmon;
-$color-base: $gray;
-$color-dark: $black;
+	// Semantic + Generic
+		$color-light: $pink-salmon;
+		$color-base: $gray;
+		$color-dark: $black;
 
 
 // --- Fonts ---
 
-// Actual
-$fira-mono-stack: "fira-mono", 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-$weight-regular: 400;
-$weight-bold: 700;
+	// Actual
+		$fira-mono-stack: "fira-mono", 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+		$weight-regular: 400;
+		$weight-bold: 700;
 
-// Semantic
-$font-mono-stack: $fira-mono-stack;
+	// Semantic
+		$font-mono-stack: $fira-mono-stack;
 
-%mono-regular {
-	font-family: $font-mono-stack;
-	font-weight: $weight-regular;
-}
-%mono-bold {
-	font-family: $font-mono-stack;
-	font-weight: $weight-bold;
-}
+		%mono-regular {
+			font-family: $font-mono-stack;
+			font-weight: $weight-regular;
+		}
+		%mono-bold {
+			font-family: $font-mono-stack;
+			font-weight: $weight-bold;
+		}
 
-// Generic
+	// Generic
+		%font-default {
+			@extend %mono-regular;
+		}
+		%font-bold {
+			@extend %mono-bold;
+		}
 
-%font-default {
-	@extend %mono-regular;
-}
-%font-bold {
-	@extend %mono-bold;
-}
+// --- Media Queries ---
+
+	// Actual & Semantic
+		$grandkid: new-breakpoint(min-width 0px);
+		$daughter: new-breakpoint(min-width 481px);
+		$mother: new-breakpoint(min-width 1000px);
+		$grandma: new-breakpoint(min-width 1201px);
+
+	// List of Queries (Dependency of @mixin each-query in _helpers)
+		$queries: $grandkid, $daughter, $mother, $grandma;
