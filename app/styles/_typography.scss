@@ -1,0 +1,139 @@
+
+%title-font {
+  @extend %mono-bold;
+  text-transform: uppercase;
+  line-height: 1.2;
+  @include media($grandkid){
+    font-size: rem(24);
+  }
+  @include media($daughter){
+    font-size: rem(32);
+  }
+}
+%body-font {
+  @extend %mono-regular;
+}
+%site-title-font {
+  @extend %title-font;
+  text-transform: uppercase;
+  @include media($grandkid){
+    font-size: rem(18);
+    br { display: none; }
+  }
+  @include media($daughter){
+    font-size: rem(36);
+    br { display: inline; }
+  }
+}
+
+%site-description-font {
+  @extend %body-font;
+  @include media($grandkid){
+    font-size: rem(10);
+  }
+  @include media($daughter){
+    font-size: rem(14);
+  }
+  @include media($mother){
+    font-size: rem(18);
+  }
+}
+
+
+p, span, a {
+  @extend %body-font;
+  line-height: 1.444;
+  @include media($grandkid){
+    font-size: rem(12);
+  }
+  @include media($daughter){
+    font-size: rem(16);
+  }
+}
+
+a {
+  color: $color-dark;
+  /*
+  background: $color-base;
+  text-decoration: none;
+  margin-bottom: .5rem;
+  display: inline-block;
+  */
+  text-decoration: none;
+}
+
+h1, h2 {
+  @extend %title-font;
+
+}
+h1 {
+  @include media($grandkid){
+    margin-bottom: rem(24);
+  }
+  @include media($daughter){
+    margin-bottom: rem(32);
+  }
+}
+h2 {
+  margin-bottom: rem(16);
+}
+
+header h1 {
+  color: $color-base;
+  position: relative;
+  z-index: 1;
+  // Shadow effect
+  &:after {
+    content: 'Miri.Codes';
+    position: absolute;
+    top: 2px;
+    left: 0;
+    z-index: -1;
+    color: $color-light;;
+  }
+  &:before {
+    content: 'Miri.Codes';
+    position: absolute;
+    top: 4px;
+    left: 0;
+    z-index: -2;
+    color: $color-dark;
+  }
+}
+
+section.projects h2 {
+  font-size: rem(16);
+}
+
+section h2 {
+  font-size: rem(18);
+}
+
+.intro {
+    @include media($grandkid) { 
+    br { display: none; }
+  }
+  @include media($daughter) {
+    br { display: inline; }
+  }
+}
+
+.text-column {
+  p {
+    margin-bottom: rem(16);
+  }
+  a {
+
+  }
+}
+
+a.email {
+  margin-left: .9rem;
+}
+a.github {
+  margin-left: .4rem;
+}
+
+.link-segment {
+  margin-right: rem(6);
+}

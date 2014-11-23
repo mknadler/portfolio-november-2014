@@ -1,7 +1,34 @@
-  (function(d) {
-    var config = {
-      kitId: 'qbz3fbu',
-      scriptTimeout: 3000
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);
+'use strict';
+
+
+// Typekit
+
+
+$(function() {
+  function place(){
+    var actuals = {};
+    actuals.header = $(".intro span");
+    actuals.header.pos = actuals.header.position();
+    actuals.header.top = actuals.header.pos.top;
+    console.log(actuals.header.top);
+    actuals.header.left = actuals.header.pos.left;
+    actuals.header.width = actuals.header.width();
+    actuals.header.height = actuals.header.height();
+    actuals.container = $("header");
+    actuals.container.width = actuals.container.width();
+    $("#ghost").css({
+      "width":actuals.header.width,
+      "height":actuals.header.height,
+      "background":"blue",
+      "position":"absolute",
+      "left": (actuals.container.width - actuals.header.width - actuals.header.left),
+      "top": actuals.header.top
+    });
+  };
+/*
+place();
+$(window).resize(function (){
+  place();
+});
+*/
+});

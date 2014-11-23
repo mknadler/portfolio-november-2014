@@ -2,9 +2,13 @@
 @import "bourbon/dist/_bourbon.scss";
 @import "neat/app/assets/stylesheets/_neat.scss";
 // endbower
+
+
+//
 @import "reset";
 @import "variables";
 @import "helpers";
+@import "typography";
 
 
 
@@ -14,38 +18,6 @@ $show-media-queries: on;
 // todo: add $show-element-borders;
 
 // Typography
-
-%title-font {
-  @extend %mono-bold;
-}
-%body-font {
-  @extend %mono-regular;
-}
-%site-title-font {
-  @extend %title-font;
-  text-transform: uppercase;
-  @include media($grandkid){
-    font-size: rem(18);
-    br { display: none; }
-  }
-  @include media($daughter){
-    font-size: rem(36);
-    br { display: inline; }
-  }
-}
-
-%site-description-font {
-  @extend %body-font;
-  @include media($grandkid){
-    font-size: rem(10);
-  }
-  @include media($daughter){
-    font-size: rem(14);
-  }
-  @include media($mother){
-    font-size: rem(18);
-  }
-}
 
 @include keyframes(fadeShrink) {
   0% { 
@@ -103,7 +75,7 @@ $show-media-queries: on;
       //background: $color-light;
 //      width: 50%;
       //margin: 0 25%;
-      background: $color-light;
+      background: $color-dark;
       @include animation(fadeShrink .8s ease);
     }
   }
@@ -125,149 +97,84 @@ body {
   }
 }
 
-h1 {
-  @extend %title-font;
-}
-h2 {
-  @extend %title-font;
-}
 
-p {
-  @extend %body-font;
-}
 
-a {
-  @extend %body-font;
-  text-decoration: none;
-  color: $color-base;
-  display: inline-block;
-  position: relative;
-}
-
-header { 
-  @include outer-container;
-  background: $color-light;
-  width: 100%;
-  transition: height 1s ease;
-  @include media($grandkid){
-    height: 30%;
-    padding: 1rem;
-  }
-  @include media($daughter){
-    height: 40%;
-    padding: 3rem;
-  }
-}
-
-header{
-
-}
-
-header h1 {
-  @extend %site-title-font;
-  color: $color-dark;
-  position: relative;
-  z-index: 1;
-  &:after {
-    content: attr(data-title);
-    position: absolute;
-    color: $color-light;
-    top: 2px;
-    left: 0;
-    z-index: -1;
-  }
-  &:before {
-    content: "Miriam Kennedy Nadler";
-    position: absolute;
-    color: $color-base;
-    top: 4px;
-    left: 0;
-    z-index: -2;
-  }
-}
-
-header p {
-  @extend %site-description-font;
-  @include media($grandkid){
-    margin: 1rem 0;
-    text-align: left;
-
-  }
-  font-size: rem(16);
-  line-height: 1.667;
-}
-
-header p a {
-    @include link-animation;   
-
-}
-
-div.title-container {
-  @include media($grandkid) {
-    @include span-columns(12 of 12);
-  }
-  @include media($daughter) {
-    @include span-columns(12 of 12);
-  }
-}
-
-div.about-container {
-  @include media($grandkid){
-    @include span-columns(12 of 12);
-    @include shift(0);
-  }
-}
-
+//---
 
 
 
 
 section {
-  overflow-x: scroll;
+  padding: 1rem;
+}
+section.top {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  background: $color-light;
+}
+section.projects {
+  display: block;
+  overflow: auto;
   width: 100%;
 }
 
-div.portfolio {
-  display: block;
+.intro {
+  @include each-query(width, (100%, 40%, 40%, 40%));
 }
 
-.portfolio > article {
-  border: 1px solid $color-light;
-  background: $color-base;
-  padding: 5px;
-  height: 15rem;
+header {
+  width: 100%;
+  position: relative;
+  @include media($grandkid){
+    //margin-bottom: 32px;
+  }
+  @include media($daughter){
+    margin-bottom: 3rem;
+  }
+  h1 {
+    display: inline-block;
+  }
+}
+
+.text-column {
+  @include media($grandkid){
+    @include span-columns(10);
+    margin-top: rem(36);
+  }
+  @include media($daughter){
+    @include span-columns(4);
+  }
+}
+.project {
   width: 15rem;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.portfolio-item h2 {
-  color: $color-base;
-  line-height: 4.5rem;
-  margin-left: 1rem;
+  height: 15rem;
   float: left;
-  font-size: rem(18);
-}
-.portfolio-item p {
-  line-height: 4.5rem;
-  font-size: rem(18);
+  background: blue;
+  margin: 2rem;
+  padding: .5rem;
+  position: relative;
+  &:nth-child(2){
+    @include linear-gradient(to right, #ffa794, #ffc98e);
   }
-
-article[data-site="blaudit"] {
-  @include linear-gradient(to right, #FFA794, #FFC98E);
-  cell-padding: 5px;
-}
-
-.test-slidr {
-  display: block;
-  div {
-    width: 10rem;
-    height: 10rem;
+  @include media($grandkid){
+    margin: 1rem auto;
+    float: center;
   }
 }
+.project a {
+  position: absolute;
+  bottom: .5rem;
+  right: .5rem;
+}
 
-
+section.top a {
+  position: relative;
+  //@include link-animation;
+  @include media($grandkid){
+    background: $color-base;
+  }
+}
 
 .browsehappy {
   margin: 0.2em 0;
