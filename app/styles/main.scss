@@ -227,12 +227,8 @@ section {
   width: 100%;
 }
 
-div.portfolio{
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 1rem;
+div.portfolio {
+  display: block;
 }
 
 .portfolio > article {
@@ -261,6 +257,14 @@ div.portfolio{
 article[data-site="blaudit"] {
   @include linear-gradient(to right, #FFA794, #FFC98E);
   cell-padding: 5px;
+}
+
+.test-slidr {
+  display: block;
+  div {
+    width: 10rem;
+    height: 10rem;
+  }
 }
 
 

@@ -1,5 +1,3 @@
-console.log('\'Allo \'Allo!');
-
   (function(d) {
     var config = {
       kitId: 'qbz3fbu',
