@@ -31,3 +31,19 @@
 	  $bar-colors: red, orange, yellow, green;
 	  @include each-query(background, $bar-colors);
 	}
+
+	@mixin debug-borders {
+  body {
+    * { border: 3px solid red; }
+    * > * { border: 2px solid orange; }
+    * > * > * { border: 1px solid yellow; }
+    * > * > * > * { border: 1px solid green; }
+  }
+}
+
+
+@mixin debug-media {
+  body:before{
+    @include show-queries;
+  }
+}

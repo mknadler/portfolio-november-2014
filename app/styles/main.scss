@@ -4,181 +4,22 @@
 // endbower
 
 
-//
-@import "reset";
-@import "variables";
-@import "helpers";
-@import "typography";
+// Modules
+@import "modules/reset";
+@import "modules/variables";
+@import "modules/helpers";
+@import "modules/typography";
+@import "modules/animation";
 
+@import "partials/general";
+@import "partials/top";
+@import "partials/projects";
 
-
-/* Switches */
-/* Debugging tools (uncommenting + recommenting repeatedly is boring) */
-$show-media-queries: on;
-// todo: add $show-element-borders;
-
-// Typography
-
-@include keyframes(fadeShrink) {
-  0% { 
-      width: 90% ;
-      margin: 0 5%;
-      background: $color-base;
-      height: 2px;
-  }
-  30% {
-      height: 5px;
-      width: 90%;
-      margin: 0 5%;
-      background: $color-base;
-  }
-  70% { width: 100% ;
-        margin: 0;
-        height: 3px;
-    }
-  100% { width: 50% ;
-         margin: 0 25%;
-         background: $color-light;
-         height: 1px;
-    }
-}
-@include keyframes(colorFade) {
-  0% {
-    color: $color-base;
-  }
-  30% {
-    color: lighten($color-base, 50%);
-  }
-  50% {
-    color: darken($color-base, 10%);
-  }
-  100% {
-    color: $color-base;
-  }
-}
-
-@mixin link-animation {
-    // todo: use JS to make mobile touch friendly
-    &:after {
-    content: '';
-    width: 90%;
-    margin: 0 5%;
-    height: 2px;
-    background: $color-base;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    //transition: all .4s ease;
-  }
-  &:hover {
-    &:after { 
-      //background: $color-light;
-//      width: 50%;
-      //margin: 0 25%;
-      background: $color-dark;
-      @include animation(fadeShrink .8s ease);
-    }
-  }
-  &:active {
-    @include animation(colorFade .2s ease);
-  }
-}
-
-// todo: move above to @imports
-
-body {
-  @extend %mono-regular;
-  background: $color-base;
-  color: $color-dark;
-  &:before{
-    @if ($show-media-queries == "on"){
-      @include show-queries;
-    }
-  }
-}
-
-
-
-//---
+// Debugging tools -- located in _helpers 
+//@include debug-borders;
+@include debug-media;
 
 
 
 
-section {
-  padding: 1rem;
-}
-section.top {
-  display: block;
-  overflow: auto;
-  width: 100%;
-  background: $color-light;
-}
-section.projects {
-  display: block;
-  overflow: auto;
-  width: 100%;
-}
 
-.intro {
-  @include each-query(width, (100%, 40%, 40%, 40%));
-}
-
-header {
-  width: 100%;
-  position: relative;
-  @include media($grandkid){
-    //margin-bottom: 32px;
-  }
-  @include media($daughter){
-    margin-bottom: 3rem;
-  }
-  h1 {
-    display: inline-block;
-  }
-}
-
-.text-column {
-  @include media($grandkid){
-    @include span-columns(10);
-    margin-top: rem(36);
-  }
-  @include media($daughter){
-    @include span-columns(4);
-  }
-}
-.project {
-  width: 15rem;
-  height: 15rem;
-  float: left;
-  background: blue;
-  margin: 2rem;
-  padding: .5rem;
-  position: relative;
-  &:nth-child(2){
-    @include linear-gradient(to right, #ffa794, #ffc98e);
-  }
-  @include media($grandkid){
-    margin: 1rem auto;
-    float: center;
-  }
-}
-.project a {
-  position: absolute;
-  bottom: .5rem;
-  right: .5rem;
-}
-
-section.top a {
-  position: relative;
-  //@include link-animation;
-  @include media($grandkid){
-    background: $color-base;
-  }
-}
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}

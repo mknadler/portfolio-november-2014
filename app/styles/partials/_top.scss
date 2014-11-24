@@ -1,0 +1,32 @@
+.intro {
+  @include each-query(width, (100%, 80%, 40%, 40%));
+}
+
+header {
+  width: 100%;
+  position: relative;
+  @include media($grandkid){
+    //margin-bottom: 32px;
+  }
+  @include media($daughter){
+    //margin-bottom: 3rem;
+  }
+  h1 {
+    display: inline-block;
+  }
+}
+
+.text-column {
+  @include media($grandkid){
+    @include span-columns(10);
+    margin-top: rem(36);
+  }
+  @include media($daughter){
+    @include span-columns(10);
+    margin-top: rem(36);
+  }
+}
+
+section.top a {
+  position: relative;
+}

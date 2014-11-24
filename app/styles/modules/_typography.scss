@@ -53,13 +53,9 @@ p, span, a {
 
 a {
   color: $color-dark;
-  /*
+  text-decoration: none;
   background: $color-base;
-  text-decoration: none;
-  margin-bottom: .5rem;
-  display: inline-block;
-  */
-  text-decoration: none;
+  padding: 0 .3rem;
 }
 
 h1, h2 {
@@ -101,8 +97,10 @@ header h1 {
   }
 }
 
-section.projects h2 {
+section.projects span {
   font-size: rem(16);
+  margin-bottom: rem(16);
+  display: inline-block;
 }
 
 section h2 {

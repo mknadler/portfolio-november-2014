@@ -1,0 +1,65 @@
+
+@include keyframes(fadeShrink) {
+  0% { 
+      width: 90% ;
+      margin: 0 5%;
+      background: $color-base;
+      height: 2px;
+  }
+  30% {
+      height: 5px;
+      width: 90%;
+      margin: 0 5%;
+      background: $color-base;
+  }
+  70% { width: 100% ;
+        margin: 0;
+        height: 3px;
+    }
+  100% { width: 50% ;
+         margin: 0 25%;
+         background: $color-light;
+         height: 1px;
+    }
+}
+@include keyframes(colorFade) {
+  0% {
+    color: $color-base;
+  }
+  30% {
+    color: lighten($color-base, 50%);
+  }
+  50% {
+    color: darken($color-base, 10%);
+  }
+  100% {
+    color: $color-base;
+  }
+}
+
+@mixin link-animation {
+    // todo: use JS to make mobile touch friendly
+    &:after {
+    content: '';
+    width: 90%;
+    margin: 0 5%;
+    height: 2px;
+    background: $color-base;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    //transition: all .4s ease;
+  }
+  &:hover {
+    &:after { 
+      //background: $color-light;
+//      width: 50%;
+      //margin: 0 25%;
+      background: $color-dark;
+      @include animation(fadeShrink .8s ease);
+    }
+  }
+  &:active {
+    @include animation(colorFade .2s ease);
+  }
+}

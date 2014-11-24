@@ -1,0 +1,95 @@
+
+
+.project {
+  width: 15rem;
+  height: 15rem;
+  float: left;
+  background: blue;
+  margin: 2rem;
+  padding: .5rem;
+  position: relative;
+  @include media($grandkid){
+    margin: 1rem auto;
+    float: center;
+  }
+}
+
+.project-blaudit{
+    @include linear-gradient(to right, #ffa794, #ffc98e);
+  }
+.project-sunlight {
+    background: #a6cbcd;
+    z-index: 1;
+    position: relative;
+    &:after {
+      content:'';
+      width: 5rem;
+      height: 5rem;
+      border-radius: 2.5rem;
+      background: rgb(255, 243, 131);
+      z-index: 2;
+      position: absolute;
+      top: 20%;
+      left: 40%;
+    }
+    span, p, a {
+      z-index: 3;
+      position: relative;
+    }
+}
+
+.project-modular {
+  background: #666666;
+  z-index: 1;
+  position: relative;
+  &:before {
+    content:'';
+    width: 100%;
+    height: 44%;
+    background: #888888;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  span, p, a {
+    z-index: 3;
+    position: relative;
+  }
+}
+
+.project-mkopas {
+  background: #ccc;
+  z-index: 2;
+  position: relative;
+  &:after {
+    content:'merritt.kopas';
+    font-family: futura;
+    font-size: 3rem;
+    overflow: hidden;
+    width: 100%;
+    height: 18%;
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: .1;
+  }
+    span, p, a {
+    z-index: 3;
+    position: relative;
+  }
+}
+
+
+.project a {
+  position: absolute;
+  bottom: .5rem;
+  right: .5rem;
+  @include media($grandkid){ 
+    background: $color-base;
+  }
+  @include media($daughter){
+
+  }
+}
