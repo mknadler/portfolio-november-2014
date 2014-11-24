@@ -8,6 +8,9 @@ body {
 
 section {
   padding: 1rem;
+  @include media($daughter){
+    padding: 3rem;
+  }
 }
 section.top {
   display: block;
@@ -28,4 +31,13 @@ section.projects {
   padding: 0.2em 0;
 }
 
-
+a{
+  transition: background .2s ease;
+  background: $color-base;
+  &:hover {
+    background: rgba(230, 230, 230, .5);
+  }
+  &:active {
+    background: rgba(230, 230, 230, 0);
+  }
+}

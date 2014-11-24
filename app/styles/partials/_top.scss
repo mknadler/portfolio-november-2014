@@ -1,5 +1,5 @@
 .intro {
-  @include each-query(width, (100%, 80%, 40%, 40%));
+  @include each-query(width, (100%, 80%, 60%, 80%));
 }
 
 header {
@@ -24,6 +24,9 @@ header {
   @include media($daughter){
     @include span-columns(10);
     margin-top: rem(36);
+  }
+  @include media($mother){
+    @include span-columns(4);
   }
 }
 

@@ -14,10 +14,10 @@
 // --- Colors ---
 
 	// Actual
-		$orange-salmon: rgb(239,111,86);
-		$pink-salmon: rgb(255, 115, 115);
-		$gray: rgb(230,230,230);
-		$black: rgb(0,0,0);
+		$orange-salmon: rgba(239, 111, 86, 1);
+		$pink-salmon: rgba(255, 130, 115, 1);
+		$gray: rgba(230, 230, 230, 1);
+		$black: rgba(0, 0, 0, 1);
 
 	// Semantic + Generic
 		$color-light: $pink-salmon;
