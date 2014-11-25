@@ -5,12 +5,6 @@
 header {
   width: 100%;
   position: relative;
-  @include media($grandkid){
-    //margin-bottom: 32px;
-  }
-  @include media($daughter){
-    //margin-bottom: 3rem;
-  }
   h1 {
     display: inline-block;
   }
