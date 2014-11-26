@@ -31,4 +31,11 @@ $(window).resize(function (){
   place();
 });
 */
+
+// switch breaks via display:inline etc depending on media query / screen size.
+
+  var textActual = $(".intro p");
+  var textHTML = textActual.html();
+  //console.log(textHTML);
+  //console.log(textHTML.split("<br> "));
 });

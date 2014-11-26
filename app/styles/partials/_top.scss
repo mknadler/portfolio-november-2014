@@ -1,5 +1,5 @@
 .intro {
-  @include each-query(width, (100%, 80%, 60%, 80%));
+  @include each-query(width, (100%, 50%, 50%, 50%));
 }
 
 header {
