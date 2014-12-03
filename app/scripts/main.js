@@ -1,41 +1,17 @@
 'use strict';
 
 
-// Typekit
-
-
-$(function() {
-  function place(){
-    var actuals = {};
-    actuals.header = $(".intro span");
-    actuals.header.pos = actuals.header.position();
-    actuals.header.top = actuals.header.pos.top;
-    console.log(actuals.header.top);
-    actuals.header.left = actuals.header.pos.left;
-    actuals.header.width = actuals.header.width();
-    actuals.header.height = actuals.header.height();
-    actuals.container = $("header");
-    actuals.container.width = actuals.container.width();
-    $("#ghost").css({
-      "width":actuals.header.width,
-      "height":actuals.header.height,
-      "background":"blue",
-      "position":"absolute",
-      "left": (actuals.container.width - actuals.header.width - actuals.header.left),
-      "top": actuals.header.top
-    });
-  };
+// Functional JSON portfolio shenanigans
+// Turned off now for speed reasons until preloader / lazy-loading solution determined
 /*
-place();
-$(window).resize(function (){
-  place();
+$(function() {
+$.getJSON('scripts/sites.json', function(sites) {
+    var output = '';
+    var test = 'outer';
+    $.each(sites, function(){
+      output += '<div class="project project-'+this.tag+'"><span>'+this.name+'</span><p>'+this.type+'. <br/>'+this.desc+'</p><a href="'+this.url+'">View site</a></div>';
+    });
+    $('.projects').append(output);
+  });
 });
 */
-
-// switch breaks via display:inline etc depending on media query / screen size.
-
-  var textActual = $(".intro p");
-  var textHTML = textActual.html();
-  //console.log(textHTML);
-  //console.log(textHTML.split("<br> "));
-});

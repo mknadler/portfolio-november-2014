@@ -35,7 +35,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= config.app %>/scripts/{,*/}*.js'],
+        files: ['<%= config.app %>/scripts/{,*/}*.{js,json}'],
         tasks: ['jshint'],
         options: {
           livereload: true
@@ -207,6 +207,7 @@ module.exports = function (grunt) {
         files: {
           src: [
             '<%= config.dist %>/scripts/{,*/}*.js',
+            '<%= config.dist %>/scripts/{,*/}*.json',
             '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/images/{,*/}*.*',
             '<%= config.dist %>/styles/fonts/{,*/}*.*',
@@ -322,7 +323,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'scripts/{,*/}*.json'
           ]
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',

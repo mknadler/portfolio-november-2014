@@ -1,0 +1,31 @@
+[
+ 	{
+    	"name":"Blazing Audit",
+        "tag":"blaudit",
+        "type":"Design & Development",
+        "desc":"Custom WordPress site for a small business.",
+        "url":"http://www.blazingaudit.com"
+    },
+    {
+    	"name":"How Much Sunlight",
+        "tag":"sunlight",
+        "type":"Design & Development",
+        "desc":"Calculates amount of sunlight remaining in the day.",
+        "url":"http://www.howmuchsunlight.com"
+    },
+    {
+    	"name":"Modular Tone",
+        "tag":"modular",
+        "type":"Design",
+        "desc":"Representing sound in shape and shape in sound.",
+        "url":"http://www.modulartone.com"
+    },
+    {
+    	"name":"mkopas.net",
+        "tag":"mkopas",
+        "type":"Design & Development",
+        "desc":"Portfolio site for a game designer.",
+        "url":"http://mkopas.net"
+    }
+
+]
