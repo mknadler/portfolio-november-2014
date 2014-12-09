@@ -35,3 +35,47 @@ h1 span {
     @include transform(translateY(-.2rem));
   }
 }
+
+header{
+  @include clearfix;
+}
+.intro, #ghost {
+  float: left;
+}
+#ghost {
+  &:after{
+    @include media($grandkid){
+      content: attr(data-mobile);
+    }
+    @include media($daughter){
+      content: attr(data-full);
+    }
+  }
+  @include media($grandkid){
+    float: right;
+    position: relative;
+    width: 100%;
+    margin: 1rem auto auto 0;
+  }
+  @include media ($daughter){
+    width: 40%;
+    margin: 0 0 0 10%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  
+  //border: 1px solid gray;
+  
+  right: 0;
+  bottom: 0;
+  span {
+    height: 1rem;
+    width: 100%;
+    display: block;
+    background: gray;
+    margin: .44rem 0;
+    opacity: .5;
+  }
+
+}
