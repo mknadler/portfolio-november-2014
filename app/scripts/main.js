@@ -64,45 +64,6 @@ $(function(){
 			ghostLines = numLines;
 			
 		};
-	/*
-	randomizeBlocks = function(){
-		var	numToChange = Math.floor(Math.random() * ghostLines + 1),
-			numCurrentBars = (ghostLines),
-			barsToPullFrom = [],
-			barsToChange = [];
-
-		(function(){
-			// Set up list of bars
-			console.log("Change this many: " + numToChange);
-			for (var i = 0, max = numCurrentBars; i < max; i++){
-				barsToPullFrom.push(i);
-			}
-			console.log("bars to pull from: " + barsToPullFrom);
-			// don't look at this i'm "failing forward" aka
-			// "it is four am and now i know never to use these methods ever again"
-			for (var j = 0; j < numToChange; j++){
-				console.log(" ");
-				console.log("Pass # " + [j]);
-				console.log("length: " + barsToPullFrom.length);
-				var grabThis = Math.floor(Math.random() * (barsToPullFrom.length));
-				console.log("indexcheck :");
-				console.log("Try to pull this one: " + grabThis);
-				console.log("barsToPullFrom before: " + barsToPullFrom);
-				var index = barsToPullFrom.indexOf(grabThis);
-				console.log("the index of the item to grab: " + index);
-				if (index > -1) {
-					barsToChange.push(barsToPullFrom[grabThis]);
-					barsToPullFrom.splice(barsToPullFrom[grabThis], 1);
-				}	
-				console.log("barsToPullFrom after: " + barsToPullFrom);
-				console.log("bars to change: " + barsToChange);
-				console.log(" ");
-			}
-			console.log("bars to change: " + barsToChange);
-		}());
-
-	};
-	*/
 
 var buildBlocks = function(){
 	var bars = [],
@@ -111,10 +72,7 @@ var buildBlocks = function(){
 	for (var i = 0, max = ghostLines; i < max; i++){
 		bars.push(i);
 	}
-	console.log(bars);
 	shuffle(bars);
-	console.log(bars);
-	console.log(numToChange);
 	while (numToChange > 0){
 		var popped = bars.pop();
 		var poppedID = popped += 1;
@@ -139,8 +97,10 @@ function shuffle(array) {
 	//call 'em
 	spanifyTextNode(title);
 	ghostBlocks($('.intro p'), $('#ghost'));
+	$('#ghost').children().css('display', 'block');
 	$(window).resize(function(){
 		ghostBlocks($('.intro p'), $('#ghost'));
+		$('#ghost').children().css('display', 'block');
 	});
 	setInterval(function(){ 
 		buildBlocks();

@@ -28,10 +28,13 @@ section.top a {
   position: relative;
 }
 
+// These are all new animation styles & are messy. 
+// TODO : refactor animations
+
 h1 span {
   display: inline-block;
   @include transition(all .1s ease-in-out);
-  &:hover{
+  &:hover, &:active {
     @include transform(translateY(-.2rem));
   }
 }
@@ -43,6 +46,8 @@ header{
   float: left;
 }
 #ghost {
+  width: 100%;
+  position: absolute;
   &:after{
     @include media($grandkid){
       content: attr(data-mobile);
@@ -52,39 +57,66 @@ header{
     }
   }
   @include media($grandkid){
-    float: right;
-    position: relative;
-    width: 100%;
     margin: 1rem auto auto 0;
-
-  right: 0;
-  bottom: 0;
+    top: 3.4rem;
+    left: 0;
   }
   @include media ($daughter){
-    width: 100%;
     margin: 0 0 0 10%;
-    position: absolute;
     right: 0;
     bottom: 0;
+    top: inherit;
+    left: inherit;
   }
   
   //border: 1px solid gray;
   
   span {
-    height: 1rem;
-    width: 40%;
+
+    width: 50%;
     display: block;
     background: $gray;
-    margin: .44rem 0;
     opacity: .2;
-    @include transition(all 3s ease-in);
-    border-radius: 5%;
+    border-radius: 0 1rem 1rem 0;
+    display: none;
+    @include transition(
+      width 4s ease-in-out,
+      background 3s ease-in-out,
+      border-radius 2s ease
+    );
   }
   span.boo{
+    display: none;
     opacity: .3;
     background: $pink-salmon;
     border-radius: 0;
     width: 10%;
+    border-right-color: $pink-salmon;
+  }
+  @include media($grandkid){
+    span {
+      height: .75rem;
+      margin: .33rem 0;
+      width: 100%;
+    }
+    span.boo {
+      width: 10%;
+    }
+  }
+  @include media($daughter){
+      span {
+        height: 1rem;
+        margin: .44rem 0;
+        width: 60%;
+      }
+      span.boo {
+        width: 10%;
+      }
+  }
+  @include media($mother){
+      span {
+        width: 40%;
+      }
   }
 
 }

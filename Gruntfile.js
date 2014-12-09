@@ -36,7 +36,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.{js,json}'],
-        tasks: ['jshint'],
+        tasks: ['jshint', 'todo'],
         options: {
           livereload: true
         }
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
       },
       sass: {
         files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
+        tasks: ['sass:server', 'autoprefixer', 'todo']
       },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
@@ -372,6 +372,23 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+
+    todo: {
+      options: {
+        marks: [
+          {
+            pattern: 'TODO',
+            color: 'blue'
+          }
+        ],
+        file: 'todos.md'
+      },
+      src: [
+        '<%= config.app %>/styles/{,*/}*.scss',
+        '<%= config.app %>/scripts/{,*/}*.js',
+        '<%= config.app %>/*.html'
+      ]
     }
   });
 
@@ -390,7 +407,8 @@ module.exports = function (grunt) {
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
-      'watch'
+      'watch', 
+      'todo'
     ]);
   });
 
