@@ -16,17 +16,17 @@
 // Show a colored bar signifying which media query is active
 // To use: @include show-queries, or see debug switches (in main.scss)
 	// todo: make placement-agnostic
-	@mixin show-queries{
-	  content:'';
-	  width: 100%;
-	  height: 10px;
-	  display: block;
-	  position: fixed;
-	  bottom: 0;
-	  z-index: 2;
-	  $bar-colors: red, orange, yellow, green;
-	  @include each-query(background, $bar-colors);
-	}
+@mixin show-queries{
+	content:'';
+	width: 100%;
+	height: 10px;
+	display: block;
+	position: fixed;
+	bottom: 0;
+	z-index: 2;
+	$bar-colors: red, orange, yellow, green;
+	@include each-query(background, $bar-colors);
+}
 
 @mixin debug-borders {
   body {

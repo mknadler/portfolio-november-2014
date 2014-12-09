@@ -27,3 +27,11 @@ header {
 section.top a {
   position: relative;
 }
+
+h1 span {
+  display: inline-block;
+  @include transition(all .1s ease-in-out);
+  &:hover{
+    @include transform(translateY(-.2rem));
+  }
+}

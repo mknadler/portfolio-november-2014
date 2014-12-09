@@ -15,3 +15,17 @@ $.getJSON('scripts/sites.json', function(sites) {
   });
 });
 */
+
+$(function(){
+	var title = $('#header-actual'),
+		newText = '',
+		spanifyTextNode = function(text){
+			var textArray = text.text().split('');
+			text.html('');
+			for (var i = 0, max = textArray.length; i < max; i++){
+				newText += '<span>'+textArray[i]+'</span>';
+			}
+			text.html(newText);
+		};
+	spanifyTextNode(title);
+});

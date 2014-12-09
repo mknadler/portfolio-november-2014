@@ -58,11 +58,11 @@ a {
   padding: 0 .3rem;
 }
 
-h1, h2 {
+h1, h2, h1 span {
   @extend %title-font;
 
 }
-h1 {
+h1, h1 span {
   @include media($grandkid){
     margin-bottom: rem(24);
   }

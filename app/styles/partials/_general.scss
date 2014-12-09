@@ -30,12 +30,37 @@ section.projects {
 }
 
 a{
-  transition: background .2s ease;
+  @include transition(all .4s ease);
   background: $color-base;
+  z-index: 1;
+  -webkit-transform: translate3d(0px,0px,0px); // webkit hardware acceleration
   &:hover {
-    background: rgba(230, 230, 230, .5);
+    background: $black;
+    border-radius: 10px 0 0 10px;
+    color: $gray;
+    &:after{
+      background: $black;
+      opacity: 1;
+      @include transform(translateX(1rem));
+      border-radius: 0 10px 10px 0;
+    }
   }
   &:active {
     background: rgba(230, 230, 230, 0);
+    &:after{
+      background: rgba(230, 230, 230, 0);
+    }
+  }
+  &:after{
+    content: '';
+    display: block;
+    width:.5rem;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: $color-base;
+    z-index: -1;
+    @include transition(all .35s ease);
   }
 }
