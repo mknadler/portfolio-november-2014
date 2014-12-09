@@ -56,9 +56,12 @@ header{
     position: relative;
     width: 100%;
     margin: 1rem auto auto 0;
+
+  right: 0;
+  bottom: 0;
   }
   @include media ($daughter){
-    width: 40%;
+    width: 100%;
     margin: 0 0 0 10%;
     position: absolute;
     right: 0;
@@ -67,15 +70,21 @@ header{
   
   //border: 1px solid gray;
   
-  right: 0;
-  bottom: 0;
   span {
     height: 1rem;
-    width: 100%;
+    width: 40%;
     display: block;
-    background: gray;
+    background: $gray;
     margin: .44rem 0;
-    opacity: .5;
+    opacity: .2;
+    @include transition(all 3s ease-in);
+    border-radius: 5%;
+  }
+  span.boo{
+    opacity: .3;
+    background: $pink-salmon;
+    border-radius: 0;
+    width: 10%;
   }
 
 }

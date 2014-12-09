@@ -1,6 +1,8 @@
 'use strict';
 
 // Welcome to my in-progress javascript! it's a work in progress.
+// This specific JS isn't the cleanest. It'll be changed soon!
+// It contains a lot of failing forward & experimenting with techniques which are new to me.
 
 // Functional JSON portfolio stuff
 // Turned off now for speed reasons until preloader / lazy-loading solution determined
@@ -60,9 +62,9 @@ $(function(){
 			ghostContainer.html(fragment);
 			// set killswitch
 			ghostLines = numLines;
-		},
-		randomizeBlocks;
-
+			
+		};
+	/*
 	randomizeBlocks = function(){
 		var	numToChange = Math.floor(Math.random() * ghostLines + 1),
 			numCurrentBars = (ghostLines),
@@ -76,36 +78,72 @@ $(function(){
 				barsToPullFrom.push(i);
 			}
 			console.log("bars to pull from: " + barsToPullFrom);
-			// don't look at this i'm "failing forward"
+			// don't look at this i'm "failing forward" aka
+			// "it is four am and now i know never to use these methods ever again"
 			for (var j = 0; j < numToChange; j++){
 				console.log(" ");
 				console.log("Pass # " + [j]);
 				console.log("length: " + barsToPullFrom.length);
 				var grabThis = Math.floor(Math.random() * (barsToPullFrom.length));
-				console.log("")
+				console.log("indexcheck :");
 				console.log("Try to pull this one: " + grabThis);
 				console.log("barsToPullFrom before: " + barsToPullFrom);
 				var index = barsToPullFrom.indexOf(grabThis);
 				console.log("the index of the item to grab: " + index);
-				barsToChange.push(barsToPullFrom[grabThis]);
-				barsToPullFrom.splice(barsToPullFrom[grabThis], 1);
+				if (index > -1) {
+					barsToChange.push(barsToPullFrom[grabThis]);
+					barsToPullFrom.splice(barsToPullFrom[grabThis], 1);
+				}	
 				console.log("barsToPullFrom after: " + barsToPullFrom);
+				console.log("bars to change: " + barsToChange);
 				console.log(" ");
 			}
 			console.log("bars to change: " + barsToChange);
 		}());
+
 	};
+	*/
+
+var buildBlocks = function(){
+	var bars = [],
+		numToChange = Math.floor(Math.random() * ghostLines + 1);
+	
+	for (var i = 0, max = ghostLines; i < max; i++){
+		bars.push(i);
+	}
+	console.log(bars);
+	shuffle(bars);
+	console.log(bars);
+	console.log(numToChange);
+	while (numToChange > 0){
+		var popped = bars.pop();
+		var poppedID = popped += 1;
+		$('span#ghost-'+poppedID).toggleClass('boo');
+		numToChange-=1;
+	}
+
+};
+// I gave up for the night on randomizeBlocks() and found the Fisher-Yates shuffle on StackOverflow
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
 
 	//call 'em
 	spanifyTextNode(title);
 	ghostBlocks($('.intro p'), $('#ghost'));
-	randomizeBlocks();
 	$(window).resize(function(){
 		ghostBlocks($('.intro p'), $('#ghost'));
-		randomizeBlocks();
 	});
 	setInterval(function(){ 
-		//randomizeBlocks();
+		buildBlocks();
 	}, 3000);
 
 });
