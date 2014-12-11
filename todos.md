@@ -9,7 +9,7 @@
 
 ## app/scripts/main.js
 
--  **TODO** `(line 47)`  : these are hard-coded values; not the best for maintenace; make dynamic.
+-  **TODO** `(line 50)`  : these are hard-coded values; not the best for maintenace; make dynamic.
 
 ## app/index.html
 

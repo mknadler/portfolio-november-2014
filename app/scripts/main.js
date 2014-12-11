@@ -18,17 +18,20 @@ $(function(){
 	// but it would be nice to have it accomodate multiple pieces of data
 	var changeCheck = (function(){
 		var isSame, stored, input, registerTruth, print, hasItChanged;
-
+		// store a value
 		input = function(datum){
 			stored = datum;
 		};
+		// store whether the values match
 		registerTruth = function(datum){
 			isSame = (datum === stored) ? true : false;
 		};
+		// log it (for debugging purposes)
 		print = function(){
 			console.log('stored state: '+stored);
 			console.log('isSame: '+isSame);
 		};
+		// publicize whether the values do not match
 		hasItChanged = function(){
 			return !isSame;
 		};
