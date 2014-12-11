@@ -1,9 +1,5 @@
-'use strict';
-
-
 
 $(function(){
-
 	// the variable names are literally a joke; if this were in production
 	// for anything besides a personal portfolio, I'd name them something
 	// more maintable. But, hey, it passes jshint.
@@ -168,8 +164,8 @@ $(function(){
 
 // call 'em all!
 	spanifyTextNode(title);
-	scaryGhosts.haunt();
 	specialGlassesThatLetYouSeeGhosts();
+	scaryGhosts.boo();
 	$(window).resize(function(){
 		scaryGhosts.boo();
 		specialGlassesThatLetYouSeeGhosts();

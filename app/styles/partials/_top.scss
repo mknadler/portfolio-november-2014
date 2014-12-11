@@ -67,8 +67,8 @@ header{
     }
   }
   @include media($grandkid){
-    margin: 1rem auto auto 0;
-    top: 3.4rem;
+    margin: 0 auto auto 0;
+    top: 3rem;
     left: 0;
   }
   @include media ($daughter){
@@ -88,7 +88,7 @@ header{
     background: $gray;
     opacity: .2;
     border-radius: 0 1rem 1rem 0;
-    display: none;
+    //display: none;
     @include transition(
       width 4s ease-in-out,
       background 3s ease-in-out,
