@@ -5,13 +5,13 @@
 
 // Iterate over all queries, changing a single value each time.
 // example: @include each-query(margin-bottom, (1rem, 2rem, 2rem, 3rem));
-	@mixin each-query($property, $values, $the-queries:$queries) {
-	  @each $query, $value in zip($the-queries, $values){
-	    @include media($query){
-	      #{$property}: $value;
-	    }    
-	  }
+@mixin each-query($property, $values, $the-queries:$queries) {
+	@each $query, $value in zip($the-queries, $values){
+	@include media($query){
+		#{$property}: $value;
+		}    
 	}
+}
 
 // Show a colored bar signifying which media query is active
 // To use: @include show-queries, or see debug switches (in main.scss)

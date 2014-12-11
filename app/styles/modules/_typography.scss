@@ -62,14 +62,7 @@ h1, h2, h1 span {
   @extend %title-font;
 
 }
-h1, h1 span {
-  @include media($grandkid){
-    margin-bottom: rem(24);
-  }
-  @include media($daughter){
-    margin-bottom: rem(32);
-  }
-}
+
 h2 {
   margin-bottom: rem(16);
 }
@@ -105,8 +98,6 @@ section.projects span {
     font-weight: 700;
   }
 }
-
-// TODO : test
 
 section h2 {
   font-size: rem(18);

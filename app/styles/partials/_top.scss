@@ -1,5 +1,13 @@
 .intro {
   @include each-query(width, (100%, 50%, 50%, 50%));
+  p {
+    @include media($grandkid){
+      margin-top: rem(24);
+    }
+    @include media($daughter){
+      margin-top: rem(32);
+    }
+  }
 }
 
 header {
@@ -30,6 +38,8 @@ section.top a {
 
 // These are all new animation styles & are messy. 
 // TODO : refactor animations
+// TODO : seriously this is pretty messy 
+// TODO : I feel bad
 
 h1 span {
   display: inline-block;
@@ -86,7 +96,7 @@ header{
     );
   }
   span.boo{
-    display: none;
+    //display: none;
     opacity: .3;
     background: $pink-salmon;
     border-radius: 0;
@@ -117,6 +127,9 @@ header{
       span {
         width: 40%;
       }
+  }
+  span.visible {
+    display: block;
   }
 
 }

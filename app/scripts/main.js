@@ -1,109 +1,181 @@
 'use strict';
 
-// Welcome to my in-progress javascript! it's a work in progress.
-// This specific JS isn't the cleanest. It'll be changed soon!
-// It contains a lot of failing forward & experimenting with techniques which are new to me.
 
-// Functional JSON portfolio stuff
-// Turned off now for speed reasons until preloader / lazy-loading solution determined
-// I either need a better webhost or am missing some reason why this is taking so long to load
-/*
-$(function() {
-$.getJSON('scripts/sites.json', function(sites) {
-    var output = '';
-    var test = 'outer';
-    $.each(sites, function(){
-      output += '<div class="project project-'+this.tag+'"><span>'+this.name+'</span><p>'+this.type+'. <br/>'+this.desc+'</p><a href="'+this.url+'">View site</a></div>';
-    });
-    $('.projects').append(output);
-  });
-});
-*/
 
 $(function(){
-	// this is kind of a mess and I need to clean it (Module for the ghost blocks?)
-	// first i want to see if these ideas work
+
+	// the variable names are literally a joke; if this were in production
+	// for anything besides a personal portfolio, I'd name them something
+	// more maintable. But, hey, it passes jshint.
+
 	var title = $('#header-actual'),
-		ghostLines,
-		newText = '',
-		// spanifyTextNode is for the jumping effect on the header>h1;
-		// it just wraps each character in a <span>
-		spanifyTextNode = function(text){
-			// why 'text.text()? better variable name in the future.'
-			var textArray = text.text().split('');
-			text.html('');
-			for (var i = 0, max = textArray.length; i < max; i++){
-				newText += '<span>'+textArray[i]+'</span>';
-			}
-			text.html(newText);
-		},
-		ghostBlocks = function(thingToGhost, ghostContainer){
-			// these values are hard-coded which is bad; if i change the font sizes,
-			// this will cease to work. need to figure out dynamic solution.
-			var lineHeight,
-				isMobile,
-				numLines,
-				fragment='';
+		human = $('.intro p'),
+		dybbuk = $('#ghost'),
+		poltergeists,
+		spanifyTextNode;
 
-			// Determine number
-			// or, y'know, i could actually just do a media query.
-			isMobile = thingToGhost.height() < 70 ? 1 : 0;
-			lineHeight = isMobile ? 17 : 23;
-			numLines = (function(){
-				return thingToGhost.height() / lineHeight;
-			}());
+	// I only wrote this to check whether a single piece of data has changed,
+	// but it would be nice to have it accomodate multiple pieces of data
+	var changeCheck = (function(){
+		var isSame, stored, input, registerTruth, print, hasItChanged;
 
-			// short-circuit to prevent unnecessary DOM lookups/manipulations
-			if (ghostLines === numLines) { return; }
-			for (var i = 0, max = numLines; i < max; i++){
-				// to prevent unecessary dom stuff
-				fragment+='<span id="ghost-'+(i + 1)+'"></span>';
+		input = function(datum){
+			stored = datum;
+		};
+		registerTruth = function(datum){
+			isSame = (datum === stored) ? true : false;
+		};
+		print = function(){
+			console.log('stored state: '+stored);
+			console.log('isSame: '+isSame);
+		};
+		hasItChanged = function(){
+			return !isSame;
+		};
+		return {
+			input: input,
+			check: registerTruth,
+			print: print,
+			stored: stored,
+			hasItChanged: hasItChanged
+		};
+	})();
+
+	var numLines = (function(){
+		var source = human,
+			sourceHeight, lineHeight, tempLines;
+		// TODO : these are hard-coded values; not the best for maintenace; make dynamic.
+		/* if the height of the P is less than 70, that means it's currently at the mobile breakpoint
+		   & the height of the produced spans should be 17px; otherwise, 23px. */
+		// It's also generating the wrong number at certain sizes (e.g. 903px, 
+		// but only sometimes (why? I'm guessing rounding, or my math for the static vals are just off.)
+		
+		var makeHeights = function(){
+			// determine what the height of each line is
+			lineHeight = sourceHeight < 70 ? 17 : 23;
+			sourceHeight = source.height();
+		};
+		var calculate = function(){
+			// set the number of lines on the fly
+			makeHeights();
+			tempLines = sourceHeight / lineHeight;
+		};
+		var store = function(){
+			// register the current number of lines with changeCheck
+			changeCheck.input(tempLines);
+		};
+		var get = function(){
+			// retrieve the number of lines, for public method
+			return tempLines;
+		};
+		return {
+			calculate: calculate,
+			store: store,
+			get: get
+		};
+	})();
+
+	var scaryGhosts = (function(){
+		var onlyOneGhostPerBodyPleaseWaitYourTurn, haunt, ectoplasm='';
+
+		// check if the number of lines has changed
+		onlyOneGhostPerBodyPleaseWaitYourTurn = function(){
+			numLines.calculate();
+			var temp = numLines.get();
+			changeCheck.check(temp);
+			if(changeCheck.hasItChanged()){
+				haunt();
 			}
-			ghostContainer.html(fragment);
-			// set killswitch
-			ghostLines = numLines;
-			
 		};
 
-var buildBlocks = function(){
-	var bars = [],
-		numToChange = Math.floor(Math.random() * ghostLines + 1);
-	
-	for (var i = 0, max = ghostLines; i < max; i++){
-		bars.push(i);
-	}
-	shuffle(bars);
-	while (numToChange > 0){
-		var popped = bars.pop();
-		var poppedID = popped += 1;
-		$('span#ghost-'+poppedID).toggleClass('boo');
-		numToChange-=1;
+		// if the number of lines hasn't changed,
+		// create a span for each of those lines and DOM 'em
+		haunt = function(){
+			numLines.calculate();
+			var howManyVeryScaryGhosts = numLines.get();
+			for (var i = 0, max = howManyVeryScaryGhosts; i < max; i++){
+				ectoplasm+='<span id="ghost-'+(i)+'"></span>';
+			}
+			dybbuk.html(ectoplasm);
+			numLines.store();
+			ectoplasm = '';
+		};
+
+		return{
+			boo: onlyOneGhostPerBodyPleaseWaitYourTurn,
+			haunt: haunt
+		};
+	})();
+
+	// for hover animations in header; wraps letters in spans
+	spanifyTextNode = function(element){
+		var newText = '', textArray = element.text().split('');
+		element.html('');
+		for (var i = 0, max = textArray.length; i < max; i++){
+				newText += '<span>'+textArray[i]+'</span>';
+			}
+		element.html(newText);
+		newText = null;
+	};
+
+	//  
+	var buildBlocks = function(amount){
+		var bars = [],
+			numToChange = Math.floor(Math.random() * amount + 1),
+			popped;
+		
+		// add a number to an array for each line of text
+		for (var i = 0, max = amount; i < max; i++){
+			bars.push(i);
+		}
+		// randomly sort that array
+		shuffle(bars);
+		// then remove each number from that array
+		// and create a span suffixed with that number
+		while (numToChange > 0){
+			popped = bars.pop();
+			$('span#ghost-'+popped).toggleClass('boo');
+			numToChange-=1;
+		}
+	};
+
+	function specialGlassesThatLetYouSeeGhosts(){
+		// Checks if the generated spans are visible;
+		// if not, makes them visible
+		// Done this way to avoid static blob-ghosts if someone
+		// doesn't have JS
+		poltergeists = dybbuk.children();
+		if(!(poltergeists.hasClass('visible'))) { 
+			poltergeists.addClass('visible');
+		}
 	}
 
-};
-// I gave up for the night on randomizeBlocks() and found the Fisher-Yates shuffle on StackOverflow
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-  return array;
-}
+	// Fisher-Yates shuffle; the only thing in here not written by me
+	function shuffle(array) {
+  		var currentIndex = array.length, temporaryValue, randomIndex ;
+  		while (0 !== currentIndex) {
+    		randomIndex = Math.floor(Math.random() * currentIndex);
+    		currentIndex -= 1;
+    		temporaryValue = array[currentIndex];
+    		array[currentIndex] = array[randomIndex];
+    		array[randomIndex] = temporaryValue;
+  		}
+  		return array;
+	}	
 
-	//call 'em
+// call 'em all!
 	spanifyTextNode(title);
-	ghostBlocks($('.intro p'), $('#ghost'));
-	$('#ghost').children().css('display', 'block');
+	scaryGhosts.haunt();
+	specialGlassesThatLetYouSeeGhosts();
 	$(window).resize(function(){
-		ghostBlocks($('.intro p'), $('#ghost'));
-		$('#ghost').children().css('display', 'block');
+		scaryGhosts.boo();
+		specialGlassesThatLetYouSeeGhosts();
 	});
 	setInterval(function(){ 
-		buildBlocks();
+		buildBlocks(numLines.get());
+		scaryGhosts.boo();
 	}, 3000);
 
-});
+	
+
+}); // end wrapper
