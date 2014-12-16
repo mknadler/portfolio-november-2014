@@ -3,13 +3,13 @@
 
 ## app/styles/partials/_top.scss
 
--  **TODO** `(line 40)`  : refactor animations
--  **TODO** `(line 41)`  : seriously this is pretty messy 
--  **TODO** `(line 42)`  : I feel bad
+-  **TODO** `(line 93)`  : refactor animations
+-  **TODO** `(line 94)`  : seriously this is pretty messy 
+-  **TODO** `(line 95)`  : I feel bad
 
 ## app/scripts/main.js
 
--  **TODO** `(line 47)`  : these are hard-coded values; not the best for maintenace; make dynamic.
+-  **TODO** `(line 49)`  : these are hard-coded values; not the best for maintenace; make dynamic.
 
 ## app/index.html
 

@@ -32,6 +32,59 @@ header {
   }
 }
 
+.text-column h2 {
+  display: inline-block;
+  position: relative;
+  margin-right: 100%;
+  /*&:before{
+      content: "";
+      transition: width 1s ease;
+      width: 0;
+    }
+  &:after{
+      content:"";
+    }
+  &:hover{
+    &:before{
+      content: "<";
+      width: 1rem;
+      @include animation(glitch 1s ease infinite);
+    }
+    &:after{
+      content:"/>";
+      @include animation(glitch 1s ease infinite);
+    }
+  }
+    */
+    &:before, &:after {
+      display:inline-block;
+      position:absolute;
+      opacity: 0;
+      transition: all 1s ease;
+    }
+    &:before{
+      content:'<';
+      left: -1rem;
+    }
+    &:after {
+      content: '/>';
+      right: -2rem;
+    }
+    &:hover{ 
+      &:before{
+        left: -.8rem;
+        opacity: 1;
+      }
+      &:after{
+        content:'/>';
+        opacity: 1;
+        right: -1.5rem;
+        @include animation(spread);
+      }
+    }
+  
+}
+
 section.top a {
   position: relative;
 }

@@ -36,6 +36,64 @@
   }
 }
 
+@include keyframes(spread){
+  0%{
+      content:'!';
+  }
+  20%{
+      content:'?';
+  }
+  40%{
+      content:'.';
+  }
+  60%{
+      content:'!!';
+  }
+  100%{
+      content:';';
+  }
+}
+
+@include keyframes(glitch){
+  0% {
+    //left: 0;
+  }
+  20% {
+    letter-spacing: .1rem;
+    //left: 0.5rem;
+  }
+  40% {
+    //left: .75rem;
+
+  }
+  60% {
+    text-transform: lowercase;
+    color: $color-light;
+    letter-spacing: .2rem;
+    border-bottom-width: 4px;
+    //left: 1rem;
+  }
+  100% {
+    text-transform: uppercase;
+    color: $color-base;
+    letter-spacing: .25rem;
+    //left: .6rem;
+  }
+  80% {
+    text-transform: lowercase;
+    color: $color-light;
+    letter-spacing: .3rem;
+    border-bottom-width: 4px;
+    //left: .3rem;
+  }
+  100% {
+    text-transform: uppercase;
+    color: $color-base;
+    letter-spacing: 0;
+    //left: 0;
+  }
+}
+
 @mixin link-animation {
     // todo: use JS to make mobile touch friendly
     &:after {

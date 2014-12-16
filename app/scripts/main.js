@@ -1,5 +1,8 @@
 
 $(function(){
+
+	"use strict";
+	
 	// the variable names are literally a joke; if this were in production
 	// for anything besides a personal portfolio, I'd name them something
 	// more maintable. But, hey, it passes jshint.
