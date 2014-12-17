@@ -1,7 +1,14 @@
 
 $(function(){
 
-	"use strict";
+	// This file does two things:
+	// 1. Wraps each character in the site title with spans, for animation purposes.
+	// 2. Controls the animation for the moving bars behind the introductory paragraph.
+
+	// There's an easier way of doing 2 that involves the same spanification, & pseudoelements
+	// set to display: inline-block, but this method was largely done this way for practice/fun/what-have-you.
+
+	'use strict';
 	
 	// the variable names are literally a joke; if this were in production
 	// for anything besides a personal portfolio, I'd name them something
@@ -51,7 +58,7 @@ $(function(){
 		   & the height of the produced spans should be 17px; otherwise, 23px. */
 		// It's also generating the wrong number at certain sizes (e.g. 903px, 
 		// but only sometimes (why? I'm guessing rounding, or my math for the static vals are just off.)
-		
+		     
 		var makeHeights = function(){
 			// determine what the height of each line is
 			lineHeight = sourceHeight < 70 ? 17 : 23;
