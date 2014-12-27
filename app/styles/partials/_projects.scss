@@ -22,10 +22,46 @@
   }
 }
 
+
+// TODO: abstract project cards
+
 .project-blaudit{
     @include linear-gradient(to right, #ffa794, #ffc98e);
   }
   
+.project-colorstreamer{
+  // Multiple linear-gradients - Demo
+  position: relative;
+  z-index: 1;
+  &:before{
+    content:'';
+    width: 100%;
+    height: 100%;
+    background: #888888;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include background-image(linear-gradient(to right, #fbb03b 0%, #fbb03b 12.5%, transparent 0%),
+                          linear-gradient(to right, #f7931e 12.5%, #f7931e 25%, transparent 20%),
+                          linear-gradient(to right, #fcee21 25%, #fcee21 37.5%, transparent 20%),
+                          linear-gradient(to right, #d9e021 37.5%, #d9e021 50%, transparent 20%),
+                          linear-gradient(to right, #CCCCCC 50%, #CCCCCC 62.5%, transparent 20%),
+                          linear-gradient(to right, #808080 62.5%, #808080 75%, transparent 20%),
+                          linear-gradient(to right, #d4145a 75%, #d4145a 87.5%, transparent 20%),
+                          linear-gradient(to right, #9e005d 87.5%, #9e005d 100%, transparent 20%)
+    );
+  }
+
+  span, p, a {
+    position: relative;
+    z-index: 3;
+  }
+  span, p {
+    background: rgba(255,255,255,0.5);
+  }
+}
+
 .project-sunlight {
     background: #a6cbcd;
     z-index: 1;

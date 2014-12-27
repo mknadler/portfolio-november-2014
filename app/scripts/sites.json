@@ -1,4 +1,11 @@
 [
+    {
+        "name":"Colorstreamer",
+        "tag":"colorstreamer",
+        "type":"Design & Development",
+        "desc":"Real-time multi-user colorpicker built with Meteor.js",
+        "url":"http://colorstreamer.meteor.com"
+    }
  	{
     	"name":"Blazing Audit",
         "tag":"blaudit",

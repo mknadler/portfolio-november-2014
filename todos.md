@@ -1,6 +1,10 @@
 # Grunt TODO
 
 
+## app/styles/partials/_projects.scss
+
+-  **TODO** `(line 26)` : abstract project cards
+
 ## app/styles/partials/_top.scss
 
 -  **TODO** `(line 93)`  : refactor animations
