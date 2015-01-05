@@ -67,7 +67,7 @@ section.projects {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to right, #fbb03b 0%, #fbb03b 12.5%, transparent 0%),
+    background: linear-gradient(to right, #fbb03b 0%, #fbb03b 12.5%, transparent 0%),
                           linear-gradient(to right, #f7931e 12.5%, #f7931e 25%, transparent 20%),
                           linear-gradient(to right, #fcee21 25%, #fcee21 37.5%, transparent 20%),
                           linear-gradient(to right, #d9e021 37.5%, #d9e021 50%, transparent 20%),
@@ -77,7 +77,7 @@ section.projects {
                           linear-gradient(to right, #9e005d 87.5%, #9e005d 100%, transparent 20%);
   }
   .project span, p {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.45);
   }
 }
 

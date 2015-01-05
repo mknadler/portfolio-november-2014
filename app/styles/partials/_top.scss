@@ -93,11 +93,6 @@ section.top a {
   position: relative;
 }
 
-// These are all new animation styles & are messy. 
-// TODO : refactor animations
-// TODO : seriously this is pretty messy 
-// TODO : I feel bad
-
 section.top .intro h1 span, .projects .section-header h1 span {
   display: inline-block;
   @include transition(translateY .1s ease-in-out);
@@ -109,7 +104,7 @@ section.top .intro h1 span, .projects .section-header h1 span {
 header{
   @include clearfix;
 }
-.intro, #ghost {
+#ghost, .intro {
   float: left;
 }
 #ghost {
