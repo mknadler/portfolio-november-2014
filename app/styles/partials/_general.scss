@@ -29,10 +29,9 @@ section.projects {
   padding: 0.2em 0;
 }
 
-a{
+.project a, section.top a {
   @include transition(all .4s ease);
   background: $color-base;
-  z-index: 1;
   -webkit-transform: translate3d(0px,0px,0px); // webkit hardware acceleration
   &:hover {
     background: $black;

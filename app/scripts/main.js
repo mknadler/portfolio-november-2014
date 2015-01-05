@@ -174,6 +174,7 @@ $(function(){
 
 // call 'em all!
 	spanifyTextNode(title);
+	spanifyTextNode($('section.projects h1'));
 	specialGlassesThatLetYouSeeGhosts();
 	scaryGhosts.boo();
 	$(window).resize(function(){

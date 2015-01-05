@@ -3,13 +3,13 @@
 
 ## app/styles/partials/_projects.scss
 
--  **TODO** `(line 26)` : abstract project cards
+-  **TODO** `(line 51)` : abstract project cards
 
 ## app/styles/partials/_top.scss
 
--  **TODO** `(line 93)`  : refactor animations
--  **TODO** `(line 94)`  : seriously this is pretty messy 
--  **TODO** `(line 95)`  : I feel bad
+-  **TODO** `(line 97)`  : refactor animations
+-  **TODO** `(line 98)`  : seriously this is pretty messy 
+-  **TODO** `(line 99)`  : I feel bad
 
 ## app/scripts/main.js
 

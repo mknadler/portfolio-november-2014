@@ -1,3 +1,7 @@
+section.top {
+  position: relative;
+}
+
 .intro {
   @include each-query(width, (100%, 50%, 50%, 50%));
   p {

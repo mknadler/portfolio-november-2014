@@ -68,29 +68,14 @@ h2 {
 }
 
 header h1 {
-  color: $color-base;
-  position: relative;
-  z-index: 1;
-  // Shadow effect
-  &:after {
-    content: 'Miri.Codes';
-    position: absolute;
-    top: 2px;
-    left: 0;
-    z-index: -1;
-    color: $color-light;;
-  }
-  &:before {
-    content: 'Miri.Codes';
-    position: absolute;
-    top: 4px;
-    left: 0;
-    z-index: -2;
-    color: $color-dark;
-  }
+  @include double-shadow("miri.codes", $color-base, $color-light, $color-dark);
 }
 
-section.projects span {
+section.projects h1 {
+  @include double-shadow("Projects", $color-dark, $color-base, $color-light);
+}
+
+section.projects .project span {
   font-size: rem(16);
   margin-bottom: rem(16);
   display: inline-block;
