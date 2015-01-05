@@ -98,9 +98,9 @@ section.top a {
 // TODO : seriously this is pretty messy 
 // TODO : I feel bad
 
-h1 span {
+section.top .intro h1 span, .projects .section-header h1 span {
   display: inline-block;
-  @include transition(all .1s ease-in-out);
+  @include transition(translateY .1s ease-in-out);
   &:hover, &:active {
     @include transform(translateY(-.2rem));
   }
