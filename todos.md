@@ -3,7 +3,7 @@
 
 ## app/styles/partials/_projects.scss
 
--  **TODO** `(line 51)` : abstract project cards
+-  **TODO** `(line 54)` : abstract project cards
 
 ## app/scripts/main.js
 

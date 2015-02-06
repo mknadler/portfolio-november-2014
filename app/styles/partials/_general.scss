@@ -20,6 +20,7 @@ section.projects {
   display: block;
   overflow: auto;
   width: 100%;
+  padding: 0;
 }
 
 .browsehappy {
@@ -35,13 +36,13 @@ section.projects {
   -webkit-transform: translate3d(0px,0px,0px); // webkit hardware acceleration
   &:hover {
     background: $black;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px 10px 0 0;
     color: $gray;
     &:after{
       background: $black;
       opacity: 1;
-      @include transform(translateX(1rem));
-      border-radius: 0 10px 10px 0;
+      @include transform(translateY(.6rem));
+      border-radius: 0 0 10px 10px;
     }
   }
   &:active {
@@ -53,11 +54,11 @@ section.projects {
   &:after{
     content: '';
     display: block;
-    width:.5rem;
-    height: 100%;
+    width: 100%;
+    height: .5rem;
     position: absolute;
     right: 0;
-    top: 0;
+    bottom: 0;
     background: $color-base;
     z-index: -1;
     @include transition(all .35s ease);

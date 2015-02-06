@@ -32,7 +32,7 @@ header {
     margin-top: rem(36);
   }
   @include media($mother){
-    @include span-columns(4);
+    @include span-columns(10);
   }
 }
 
@@ -40,26 +40,6 @@ header {
   display: inline-block;
   position: relative;
   margin-right: 100%;
-  /*&:before{
-      content: "";
-      transition: width 1s ease;
-      width: 0;
-    }
-  &:after{
-      content:"";
-    }
-  &:hover{
-    &:before{
-      content: "<";
-      width: 1rem;
-      @include animation(glitch 1s ease infinite);
-    }
-    &:after{
-      content:"/>";
-      @include animation(glitch 1s ease infinite);
-    }
-  }
-    */
     &:before, &:after {
       display:inline-block;
       position:absolute;
@@ -74,7 +54,7 @@ header {
       content: '/>';
       right: -2rem;
     }
-    &:hover{ 
+    &:hover{
       &:before{
         left: -.8rem;
         opacity: 1;
@@ -86,7 +66,7 @@ header {
         @include animation(spread);
       }
     }
-  
+
 }
 
 section.top a {
@@ -130,9 +110,9 @@ header{
     top: inherit;
     left: inherit;
   }
-  
+
   //border: 1px solid gray;
-  
+
   span {
 
     width: 50%;

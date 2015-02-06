@@ -9,7 +9,7 @@
 	@each $query, $value in zip($the-queries, $values){
 	@include media($query){
 		#{$property}: $value;
-		}    
+		}
 	}
 }
 

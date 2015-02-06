@@ -9,7 +9,7 @@ $(function(){
 	// set to display: inline-block, but this method was largely done this way for practice/fun/what-have-you.
 
 	'use strict';
-	
+
 	// the variable names are literally a joke; if this were in production
 	// for anything besides a personal portfolio, I'd name them something
 	// more maintable. But, hey, it passes jshint.
@@ -56,9 +56,9 @@ $(function(){
 		// TODO : these are hard-coded values; not the best for maintenace; make dynamic.
 		/* if the height of the P is less than 70, that means it's currently at the mobile breakpoint
 		   & the height of the produced spans should be 17px; otherwise, 23px. */
-		// It's also generating the wrong number at certain sizes (e.g. 903px, 
+		// It's also generating the wrong number at certain sizes (e.g. 903px,
 		// but only sometimes (why? I'm guessing rounding, or my math for the static vals are just off.)
-		     
+
 		var makeHeights = function(){
 			// determine what the height of each line is
 			lineHeight = sourceHeight < 70 ? 17 : 23;
@@ -116,6 +116,8 @@ $(function(){
 		};
 	})();
 
+
+
 	// for hover animations in header; wraps letters in spans
 	spanifyTextNode = function(element){
 		var newText = '', textArray = element.text().split('');
@@ -127,12 +129,12 @@ $(function(){
 		newText = null;
 	};
 
-	//  
+	//
 	var buildBlocks = function(amount){
 		var bars = [],
 			numToChange = Math.floor(Math.random() * amount + 1),
 			popped;
-		
+
 		// add a number to an array for each line of text
 		for (var i = 0, max = amount; i < max; i++){
 			bars.push(i);
@@ -154,7 +156,7 @@ $(function(){
 		// Done this way to avoid static blob-ghosts if someone
 		// doesn't have JS
 		poltergeists = dybbuk.children();
-		if(!(poltergeists.hasClass('visible'))) { 
+		if(!(poltergeists.hasClass('visible'))) {
 			poltergeists.addClass('visible');
 		}
 	}
@@ -170,7 +172,7 @@ $(function(){
     		array[randomIndex] = temporaryValue;
   		}
   		return array;
-	}	
+	}
 
 // call 'em all!
 	spanifyTextNode(title);
@@ -181,11 +183,11 @@ $(function(){
 		scaryGhosts.boo();
 		specialGlassesThatLetYouSeeGhosts();
 	});
-	setInterval(function(){ 
+	setInterval(function(){
 		buildBlocks(numLines.get());
 		scaryGhosts.boo();
 	}, 3000);
 
-	
+
 
 }); // end wrapper
