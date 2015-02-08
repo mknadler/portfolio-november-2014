@@ -177,15 +177,19 @@ $(function(){
 // call 'em all!
 	spanifyTextNode(title);
 	spanifyTextNode($('section.projects h1'));
-	specialGlassesThatLetYouSeeGhosts();
-	scaryGhosts.boo();
+	spanifyTextNode($('.intro li.link-twitter span.contact-target'));
+	spanifyTextNode($('.intro li.link-codepen span.contact-target'));
+	spanifyTextNode($('.intro li.link-github span.contact-target'));
+	spanifyTextNode($('.intro li.link-email span.contact-target'));
+	//specialGlassesThatLetYouSeeGhosts();
+	// scaryGhosts.boo();
 	$(window).resize(function(){
-		scaryGhosts.boo();
-		specialGlassesThatLetYouSeeGhosts();
+		//scaryGhosts.boo();
+		//specialGlassesThatLetYouSeeGhosts();
 	});
 	setInterval(function(){
-		buildBlocks(numLines.get());
-		scaryGhosts.boo();
+		//buildBlocks(numLines.get());
+		//scaryGhosts.boo();
 	}, 3000);
 
 

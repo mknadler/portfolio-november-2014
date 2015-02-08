@@ -3,7 +3,7 @@
 
 ## app/styles/partials/_projects.scss
 
--  **TODO** `(line 54)` : abstract project cards
+-  **TODO** `(line 47)` : abstract project cards
 
 ## app/scripts/main.js
 
@@ -11,4 +11,4 @@
 
 ## app/index.html
 
--  **TODO** `(line 43)` : BEMify (better) -->
+-  **TODO** `(line 44)` : BEMify (better) -->

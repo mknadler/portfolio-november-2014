@@ -63,3 +63,15 @@
     @include show-queries;
   }
 }
+
+@mixin mobile{
+  @include media($grandkid){
+    @content;
+  }
+}
+
+@mixin not-mobile{
+  @include media($daughter){
+    @content;
+  }
+}

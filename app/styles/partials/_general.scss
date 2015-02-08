@@ -4,6 +4,26 @@ body {
   color: $color-dark;
 }
 
+body {
+  border: 8px solid $color-highlight;
+  &:after{
+    content: '';
+    height: 8px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: $color-highlight;
+    z-index: 5;
+  }
+}
+
+#header-actual {
+  span:nth-child(5){
+    color: $color-light;
+  }
+}
+
 section {
   padding: 1rem;
   @include media($daughter){
@@ -14,14 +34,16 @@ section.top {
   display: block;
   overflow: auto;
   width: 100%;
-  background: $color-light;
+  background: $color-base;
 }
+
 section.projects {
   display: block;
   overflow: auto;
   width: 100%;
   padding: 0;
 }
+
 
 .browsehappy {
   margin: 0.2em 0;
@@ -30,7 +52,7 @@ section.projects {
   padding: 0.2em 0;
 }
 
-.project a, section.top a {
+/*.project a, section.top a {
   @include transition(all .4s ease);
   background: $color-base;
   -webkit-transform: translate3d(0px,0px,0px); // webkit hardware acceleration
@@ -63,4 +85,111 @@ section.projects {
     z-index: -1;
     @include transition(all .35s ease);
   }
+} */
+
+.codepen-wrapper {
+  @include span-columns(12);
+  @include not-mobile {
+    @include span-columns(6);
+      padding: 2rem;
+      &:nth-child(2n) {
+        @include omega;
+      }
+  }
+}
+
+header > a, body > a, section > a, .codepen-wrapper > a, .intro > a {
+  display: none;
+}
+
+header p {
+  //background: $color-highlight;
+  padding: .5rem .5rem .5rem 0;
+  margin-bottom: 1rem;
+  span {
+    font-weight: $weight-bold;
+    color: $color-dark;
+  }
+  @include media($mother){
+    width: 50%;
+  }
+  @include media($grandma){
+    width: 33%;
+  }
+}
+
+div.intro{
+  padding: 2rem 0;
+  @include not-mobile {
+    width: 100%;
+    padding: 2rem;
+  }
+}
+
+header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+//width: 100%;
+
+  li {
+    margin: none;
+    @include media($mother) {
+      margin: 0 1rem 1rem 0;
+      display: inline-block;
+    }
+    padding: .5rem .5rem .5rem 0;
+    position: relative;
+  }
+
+  span, a, li {
+    @include each-query(font-size, (.75rem 1rem 1.3rem 1rem));
+  }
+
+  li:nth-child(2){
+    @include media($mother){
+      width: 40vw;
+    }
+    @include media($grandma){
+      width: auto;
+    }
+  }
+
+  a {
+    height: 100%;
+    display: inline-block;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+    padding: .5rem .5rem .15rem .5rem;
+    margin-bottom: .25rem;
+  }
+  span {
+    //position: absolute;
+  }
+  span.contact-target {
+    top: 0; right: 0;
+    color: $color-dark;
+    opacity: .5;
+    font-weight: $weight-bold;
+  }
+  span.contact-username {
+    top: 1.5rem; right: 0;
+    color: $color-dark;
+    font-weight: $weight-bold;
+
+  }
+}
+
+a:hover, focus{
+
+}
+
+i.fa {
+  //font-size: 1.5rem;
+  @include media($daughter) {
+    //font-size: 3rem;
+  }
+  margin-right: 1rem;
+  color: $color-dark;
+  opacity: 1;
+  float: left;
 }

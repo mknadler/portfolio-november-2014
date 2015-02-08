@@ -34,6 +34,7 @@
     <!-- endbuild -->
     <script src="//use.typekit.net/qbz3fbu.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -46,47 +47,143 @@
       <header>
         <div class="intro">
           <h1 id="header-actual">Miri.Codes</h1>
-          <p>That's me. My name is Miriam Nadler.<br> I'm especially interested in typography,<br> Sass,  and trying to evoke delight<br>via web technologies.</p>
-        </div>
-        <div id="ghost">
+          <p><span>Miriam Nadler</span>. I code; I design; I live in Brooklyn, NY; I play pinball; I write; I use too many semi-colons.</p><p>I'm passionate about many (many) web things, but, these days, mostly Sass & animation.</p>
+          <ul>
+            <li class="link-twitter"><a href="https://twitter.com/antimytheme"><i class="fa fa-twitter"></i><span class="contact-target">Twitter</span> <span class="contact-username">antimytheme</a></li>
+            <li class="link-email"><a href="mailto:hello@miri.codes"><i class="fa fa-envelope"></i><span class="contact-target">Email</span> <span class="contact-username">hello@miri.codes</span></a></li>
+            <li class="link-github"><a href="https://github.com/mknadler"><i class="fa fa-github"></i><span class="contact-target">GitHub</span> <span class="contact-username">mknadler</span</li>
+            <li class="link-codepen"><a href="http://codepen.io/mknadler/"><i class="fa fa-codepen"></i><span class="contact-target">CodePen</span> <span class="contact-username">mknadler</span</li>
+          </ul>
         </div>
       </header>
-      <!--<div class="text-column">
-        <h2>Code</h2>
-        <p>Languages: HTML5, CSS3/Sass, JavaScript, PHP.</p>
-        <p>Tools/Frameworks: jQuery, Meteor, WordPress.</p>
-        <p>This site was built with HTML5, CSS, Sass, Bourbon + Neat, JavaScript, Grunt, Bower, and Yeoman.</p>
-        <a href="https://github.com/mknadler/portfolio-november-2014/">See GitHub repository.</a>
-      </div>
-      <div class="text-column">
-        <h2>Design</h2>
-        <p>I use grid paper, pencils, and Adobe Creative Suite for my visual designs.</p>
-        <p>I designed this site with layout sprints, Illustrator mockups, and an in-browser iterative approach.</p>
-        <a href="/portfolio_mocks.svg">See site sketches.</a>
-      </div>
-    -->
-      <div class="text-column column-etc">
-        <h2>contact</h2>
-        <a class="" href="mailto:hello@miri.codes">Email: hello@miri.codes</a>
-        <a class="" href="https://twitter.com/antimytheme">Twitter: @antimytheme</a>
-        <a href="https://github.com/mknadler">GitHub: mknadler</a>
-        <a class="codepen" href="http://codepen.io/mknadler/">CodePen: mknadler</a>
-      </div>
-
     </section>
+
     <section class="projects">
-      <div class="section-header">
-        <h1>Projects</h1>
+      <div class="codepen-wrapper codepen-orbs"><p data-height="380" data-theme-id="12049" data-slug-hash="GgMERV" data-default-tab="result" data-user="mknadler" class='codepen'>See the Pen <a href='http://codepen.io/mknadler/pen/GgMERV/'>Orbs!</a> by Miriam Nadler (<a href='http://codepen.io/mknadler'>@mknadler</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
       </div>
+      <div class="codepen-wrapper codepen-keyframer"><div data-height="380" data-theme-id="12049" data-slug-hash="YPrLeN" data-default-tab="css" data-user="mknadler" class='codepen'><pre><code>// Some of this code was adapted from the random-animate mixin written for https://github.com/mknadler/randomize.scss.
+
+@mixin keyframer($animation-name, $animation-steps){
+
+  // Declare some stuff for use inside of loops
+  $num-steps: length($animation-steps);
+  $steps-to-add: length($animation-steps);
+  $step-list: ();
+
+
+  // Calculate the proper number and % value of steps
+  @while $steps-to-add &gt; 0 {
+    $step-list: join(floor($steps-to-add - 1) * (100 / ($num-steps - 1)), $step-list);
+    $steps-to-add: $steps-to-add - 1;
+  }
+
+  @keyframes #{$animation-name} {
+
+    @for $i from 1 through length($step-list){
+      // Declare some stuff for use inside of loops
+      $this-list: nth($animation-steps, $i);
+      $this-length: length($this-list);
+      $these-props: ();
+      $these-vals: ();
+
+      // Parse out each list into separate lists of properties &amp; values
+      @for $j from 1 through ($this-length){
+        @if ($j % 2 == 1){
+          $these-props: append($these-props, nth($this-list, $j));
+        }
+        @if ($j % 2 == 0){
+          $these-vals: append($these-vals, nth($this-list, $j));
+        }
+      }
+
+      // Finally, generate the keyframes
+      #{nth($step-list, $i)}% {
+        @for $k from 1 through length($these-props){
+          #{nth($these-props, $k)}: nth($these-vals, $k);
+        }
+      }
+
+    }
+  }
+}
+
+@include keyframer(
+  $animation-name: test,
+  // This could probably be called in a more graceful way?
+  // Gets clunky with more than a few properties per frame.
+  // then again: making this many frames is clunky business.
+
+  // This example has 32 frames.
+  // Better than writing &quot;3%{ ... }, 6% { ... },&quot; etc., nu?
+  $animation-steps: (
+    background #000,
+    background #111 width 95% height 100%,
+    background #222 border (1px solid gray),
+    background #333,
+    background #444 border-width 0px width 100% height 95%,
+    background #555 height 100% width 100%,
+    background #666,
+    background #777 height 90% border (3px solid black),
+    background #888 border (1px solid gray),
+    background #999,
+    background #000 border-width 0px width 100% height 100%,
+    background #AAA,
+    background #BBB,
+    background #CCC height 90% border (3px solid black),
+    background #DDD border (1px solid gray),
+    background #EEE,
+    background #FFF border-width 0px width 100% height 100%,
+    background #000,
+    background #111 width 95% height 100%,
+    background #222 border (1px solid gray),
+    background #333,
+    background #444 border-width 0px width 100% height 95%,
+    background #555 height 100% width 100%,
+    background #666,
+    background #777 height 90% border (3px solid black),
+    background #888 border (1px solid gray),
+    background #999,
+    background #000 border-width 0px width 100% height 100%,
+    background #AAA,
+    background #BBB,
+    background #CCC height 90% border (3px solid black),
+    background #DDD border (1px solid gray),
+    background #EEE,
+    background #FFF border-width 0px width 100% height 100%
+  )
+);
+
+html, body, div {
+  width: 100%;
+  height: 100%;
+}
+
+div {
+  animation: test 20s linear infinite;
+  border-style: solid;
+};
+
+span {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  color: white;
+  margin: auto;
+  height: 2rem;
+  width: 14rem;
+}</code></pre>
+<p>See the Pen <a href='http://codepen.io/mknadler/pen/YPrLeN/'>Keyframe Generating Mixin</a> by Miriam Nadler (<a href='http://codepen.io/mknadler'>@mknadler</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+</div></div>
+
+      <div class="codepen-wrapper codepen-orbs">
+        <p data-height="380" data-theme-id="12049" data-slug-hash="QwdQBx" data-default-tab="result" data-user="mknadler" class='codepen'>See the Pen <a href='http://codepen.io/mknadler/pen/QwdQBx/'>randomize.scss</a> by Miriam Nadler (<a href='http://codepen.io/mknadler'>@mknadler</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+</div>
+
+<div class="codepen-wrapper codepen-orbs"><p data-height="380" data-theme-id="12049" data-slug-hash="EaWeeo" data-default-tab="result" data-user="mknadler" class='codepen'>See the Pen <a href='http://codepen.io/mknadler/pen/EaWeeo/'>RGBA Fossa SVG Animation</a> by Miriam Nadler (<a href='http://codepen.io/mknadler'>@mknadler</a>) on <a href='http://codepen.io'>CodePen</a>.</p></div>
+
       <div class="project project-colorstreamer">
         <span>Colorstreamer</span>
         <p>Design & Development. <br>Real-time multiuser colorpicker, built in Meteor.js.</br></p>
         <a href="http://colorstreamer.meteor.com">View site</a>
-      </div>
-      <div class="project project-blaudit">
-        <span>Blazing Audit</span>
-        <p>Design & Development. <br>Custom WordPress site for a small business.</br></p>
-        <a href="http://www.blazingaudit.com">View site</a>
       </div>
         <div class="project project-sunlight">
         <span>How Much Sunlight</span>
@@ -97,11 +194,6 @@
         <span>Modular Tone</span>
         <p>Design. <br>Representing sound in shape and shape in sound.</p>
         <a href="http://www.modulartone.com">View site</a>
-      </div>
-      <div class="project project-mkopas">
-        <span>mkopas.net</span>
-        <p>Design & Development. <br>Portfolio site for a game designer.</p>
-        <a href="http://mkopas.net">View site</a>
       </div>
     </section>
     <!--<section class="animation">
@@ -134,7 +226,7 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-50390525-3');ga('send','pageview');
     </script>
-
+    <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
         <!-- endbuild -->

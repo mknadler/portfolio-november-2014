@@ -3,10 +3,10 @@
 * { box-sizing: border-box; }
 
 // F11
-html, body {width: 100%; height: 100%;}
+html, body {width: 100%;}
 
 // Undo webkit typography shenanigans
-p, h1, h2, h3, h4, h5, h6, span, a, li, ul { 
+p, h1, h2, h3, h4, h5, h6, span, a, li, ul {
 	@each $suffix in (before, after, start, end){
 		margin: 0;
 		-webkit-margin-#{$suffix}: 0;

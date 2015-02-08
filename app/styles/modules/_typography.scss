@@ -66,11 +66,11 @@ h1, h2, h1 span {
 h2 {
   margin-bottom: rem(16);
 }
-
+/*
 header h1 {
   @include double-shadow("miri.codes", $color-base, $color-light, $color-dark);
 }
-
+*/
 section.projects h1 {
   @include double-shadow("Projects", $color-dark, $color-base, $color-light);
 }

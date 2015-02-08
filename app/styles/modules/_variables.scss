@@ -1,6 +1,6 @@
 /* VARIABLES
-	
-	'Actual': a variable whose value is measureable, e.g. color, size; 
+
+	'Actual': a variable whose value is measureable, e.g. color, size;
 					e.g. $black: #000000
 	'Semantic': a variable defined by its purpose, function, or role
 			  		e.g. $dark: $black;
@@ -19,6 +19,11 @@
 		$gray: rgba(230, 230, 230, 1);
 		$black: rgba(0, 0, 0, 1);
 		$birdblue: rgba(163, 226, 239, 1);
+
+		$amethyst: #9b59b6;
+		$peter-river: #3498db;
+		$midnight-blue: #2c3e50;
+		$wet-asphalt: #34495e;
 
 	// Semantic + Generic
 		$color-light: $pink-salmon;
